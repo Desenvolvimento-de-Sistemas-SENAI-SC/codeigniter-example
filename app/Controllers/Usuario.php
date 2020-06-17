@@ -3,6 +3,14 @@
 class Usuario extends BaseController
 {
     public function index() {
-        return view('usuario/listar');
+        $dados = ['usuarios' => 
+            [
+                'Rafael',
+                'Miguel',
+                'Josias'
+            ]
+        ];
+
+        return view('usuario/listar', $dados);
     }
 }

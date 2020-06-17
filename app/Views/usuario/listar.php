@@ -6,5 +6,13 @@
 </head>
 <body>
     <h1>Lista de usuários</h1>
+
+    <ul>
+        <?php
+            foreach($usuarios as $usuario)  {
+                echo '<li>' . $usuario . '</li>';
+            }
+        ?>
+    </ul>
 </body>
 </html>

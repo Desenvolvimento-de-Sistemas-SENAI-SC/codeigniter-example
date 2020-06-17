@@ -10,7 +10,7 @@
     <ul>
         <?php
             foreach($usuarios as $usuario)  {
-                echo '<li>' . $usuario . '</li>';
+                echo '<li>' . $usuario['nome'] . '</li>';
             }
         ?>
     </ul>

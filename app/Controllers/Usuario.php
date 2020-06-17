@@ -13,4 +13,14 @@ class Usuario extends BaseController
 
         return view('usuario/listar', $dados);
     }
+
+    public function detalhes($id = null)  {
+        $dados = [];
+
+        $model = new UsuariosModel();
+
+        $dados['usuario'] = $model->getUsuario($id);
+
+        return view('usuario/detalhes', $dados);
+    }
 }

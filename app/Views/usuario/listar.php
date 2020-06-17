@@ -7,12 +7,21 @@
 <body>
     <h1>Lista de usuários</h1>
 
-    <ul>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Visualizar</th>
+        </tr>
         <?php
             foreach($usuarios as $usuario)  {
-                echo '<li>' . $usuario['nome'] . '</li>';
+                echo '<tr>';
+                echo '<td>' . $usuario['nome'] . '</td>';
+                echo '<td>' . $usuario['email'] . '</td>';
+                echo '<td><a href="detalhes/'. $usuario['id'].'">Abrir</a></td>';
+                echo '</tr>';
             }
         ?>
-    </ul>
+    </table>
 </body>
 </html>

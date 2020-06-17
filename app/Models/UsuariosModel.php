@@ -9,4 +9,8 @@ class UsuariosModel extends Model
     public function getUsuarios()   {
         return $this->findAll();
     }
+
+    public function getUsuario($id) {
+        return $this->where(['id' => $id])->first();
+    }
 }

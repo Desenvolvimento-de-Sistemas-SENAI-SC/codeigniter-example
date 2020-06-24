@@ -23,4 +23,12 @@ class Usuario extends BaseController
 
         return view('usuario/detalhes', $dados);
     }
+
+    public function cadastrar()   {
+        $dados['titulo'] = 'Cadastrar novo usuário';
+
+        echo view('templates/header', $dados);
+        echo view('usuario/inserir');
+        echo view('templates/footer');
+    }
 }

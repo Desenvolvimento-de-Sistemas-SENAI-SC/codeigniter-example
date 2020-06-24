@@ -18,7 +18,9 @@
                 echo '<tr>';
                 echo '<td>' . $usuario['nome'] . '</td>';
                 echo '<td>' . $usuario['email'] . '</td>';
-                echo '<td><a href="detalhes/'. $usuario['id'].'">Abrir</a></td>';
+                echo '<td>';
+                echo anchor('Usuario/detalhes/'.$usuario['id'], 'Abrir');
+                echo '</td>';
                 echo '</tr>';
             }
         ?>

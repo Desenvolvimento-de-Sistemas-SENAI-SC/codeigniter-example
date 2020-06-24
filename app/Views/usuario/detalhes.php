@@ -14,6 +14,7 @@
         Senha: <strong><?php echo $usuario['hash_senha'] ?></strong>
     </p>
 
-    <a href="../index">Voltar</a>
+    <?php echo anchor('Usuario/index', 'Voltar') ?>
+
 </body>
 </html>

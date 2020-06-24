@@ -27,7 +27,9 @@ class Usuario extends BaseController
     public function cadastrar()   {
         $dados['titulo'] = 'Cadastrar novo usuário';
 
-        $this->validate([
+        $model = new UsuariosModel();
+
+        $array_regras = [
             'nome' => [
                 'rules' => 'required|min_length[3]|max_length[20]',
                 'errors' => [
@@ -51,10 +53,22 @@ class Usuario extends BaseController
                     'matches' => 'A confirmação não confere com a senha!'
                 ]
             ]
-        ]);
+        ];
 
         echo view('templates/header', $dados);
-        echo view('usuario/inserir');
+
+        if(!$this->validate($array_regras)) {
+            echo view('usuario/inserir');
+        }
+        else    {
+            $model->save([
+                'nome' => $this->request->getVar('nome'),
+                'email' => $this->request->getVar('email'),
+                'hash_senha' => sha1($this->request->getVar('hash_senha'))
+            ]);
+            echo view('usuario/sucesso');
+        }
+
         echo view('templates/footer');
     }
 }

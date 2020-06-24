@@ -25,5 +25,13 @@
             }
         ?>
     </table>
+
+    <p> 
+            Adicionar 
+            <?php
+                echo anchor('Usuario/cadastrar', 'novo')
+            ?>
+            usuário
+    </p>
 </body>
 </html>

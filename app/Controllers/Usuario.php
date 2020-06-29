@@ -72,6 +72,17 @@ class Usuario extends BaseController
         echo view('templates/footer');
     }
 
+    public function editar($id = null) {
+        $model = new UsuariosModel();
+
+        $dados['titulo'] = 'Editar usuário';
+        $dados['usuario'] = $model->getUsuario($id);
+
+        echo view('templates/header', $dados);
+        echo view('usuario/editar', $dados);
+        echo view('templates/footer');
+    }
+
     public function deletar($id)    {
         $model = new UsuariosModel();
         $model->where(['id' => $id])->delete();

@@ -21,6 +21,8 @@
                 echo '<td>';
                 echo anchor('Usuario/detalhes/'.$usuario['id'], 'Abrir');
                 echo ' ';
+                echo anchor('Usuario/editar/'.$usuario['id'], 'Editar');
+                echo ' ';
                 echo anchor(
                     'Usuario/deletar/'.$usuario['id'], 
                     'Deletar', 

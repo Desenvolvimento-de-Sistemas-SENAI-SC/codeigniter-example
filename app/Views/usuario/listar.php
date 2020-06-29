@@ -21,7 +21,11 @@
                 echo '<td>';
                 echo anchor('Usuario/detalhes/'.$usuario['id'], 'Abrir');
                 echo ' ';
-                echo anchor('Usuario/deletar/'.$usuario['id'], 'Deletar');
+                echo anchor(
+                    'Usuario/deletar/'.$usuario['id'], 
+                    'Deletar', 
+                    ['class' => 'link-deletar']
+                );
                 echo '</td>';
                 echo '</tr>';
             }
@@ -35,5 +39,22 @@
             ?>
             usuário
     </p>
+
+
+    <script type="text/javascript">
+        var confirmarDelecao = function(elementoLink)  {
+            if(!confirm("Deseja excluir esse registro?"))   {
+                elementoLink.preventDefault();
+            }
+        }
+
+        var links = document.querySelectorAll('.link-deletar');
+
+        links.forEach(function(link)    {
+            link.onclick = confirmarDelecao;
+        });
+
+    </script>
+
 </body>
 </html>

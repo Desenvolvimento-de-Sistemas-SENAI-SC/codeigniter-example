@@ -5,6 +5,8 @@
 
     <h1>Editar usuário</h1>
 
+    <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+
     <label for="nome">Nome: </label>
     <input type="text" name="nome" value="<?php echo $usuario['nome']; ?>"> <br>
 

@@ -75,12 +75,45 @@ class Usuario extends BaseController
     public function editar($id = null) {
         $model = new UsuariosModel();
 
-        $dados['titulo'] = 'Editar usuário';
-        $dados['usuario'] = $model->getUsuario($id);
+        $regras_validacao = [
+            'nome' => [
+            'rules' => 'required|min_length[3]|max_length[20]',
+                'errors' => [
+                    'required' => 'O nome é obrigatório!',
+                    'min_length' => 'O nome deve ter pelo menos 3 caracteres!',
+                    'max_length' => 'O nome deve ter no máximo 20 caracteres!'
+                ]
+            ],
+            'email' =>  [
+                'rules' => 'required|valid_email',
+                'errors' => [
+                    'required' => 'O e-mail é obrigatório!',
+                    'valid_email' => 'O e-mail fornecido não é válido!'
+                ]
+            ]
+        ];
 
-        echo view('templates/header', $dados);
-        echo view('usuario/editar', $dados);
-        echo view('templates/footer');
+        $dados['titulo'] = 'Editar usuário';
+
+        if(!$this->validate($regras_validacao)) {
+            $dados['usuario'] = $model->getUsuario($id);
+
+            echo view('templates/header', $dados);
+            echo view('usuario/editar', $dados);
+            echo view('templates/footer');
+        }
+        else {
+            $id = $this->request->getVar('id');
+            $atualizacao = [
+                'nome' => $this->request->getVar('nome'),
+                'email' => $this->request->getVar('email')
+            ];
+
+            $model->update($id, $atualizacao);
+            return redirect()->to(site_url('Usuario/index'));
+        }
+
+        
     }
 
     public function deletar($id)    {

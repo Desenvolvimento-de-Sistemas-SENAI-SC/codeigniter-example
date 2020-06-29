@@ -11,7 +11,7 @@
         <tr>
             <th>Nome</th>
             <th>E-mail</th>
-            <th>Visualizar</th>
+            <th>Opções</th>
         </tr>
         <?php
             foreach($usuarios as $usuario)  {
@@ -20,6 +20,8 @@
                 echo '<td>' . $usuario['email'] . '</td>';
                 echo '<td>';
                 echo anchor('Usuario/detalhes/'.$usuario['id'], 'Abrir');
+                echo ' ';
+                echo anchor('Usuario/deletar/'.$usuario['id'], 'Deletar');
                 echo '</td>';
                 echo '</tr>';
             }

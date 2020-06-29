@@ -71,4 +71,11 @@ class Usuario extends BaseController
 
         echo view('templates/footer');
     }
+
+    public function deletar($id)    {
+        $model = new UsuariosModel();
+        $model->where(['id' => $id])->delete();
+        
+        return redirect()->to(site_url('Usuario/index'));
+    }
 }
